@@ -47,30 +47,57 @@ body {
     margin-bottom: 2rem;
 }
 
+#services .card-body {
+    padding: 1rem 1.5rem; /* Reduced padding to remove excess whitespace */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Ensures all content is center-aligned */
+    text-align: center;
+}
+
+#services .icon {
+    font-size: 2rem;
+    color: #547d65;
+}
+
 #services .card-title {
     font-size: 1.5rem;
-    margin-top: 1rem;
-    color: #007bff;
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+    color: #000000;
 }
 
 #services ul {
-    padding-left: 20px; /* Left padding for bullets */
+    padding: 0; /* Removed default padding */
+    list-style: none; /* Removed default bullet points */
     margin: 0;
 }
 
 #services ul li {
-    font-size: 1rem;
     margin: 0.5rem 0;
-    list-style-type: disc; /* Add bullet points */
-}
-
-#services .services-list li {
+    font-size: 1.1rem;
     display: flex;
-    align-items: center; /* Align list items vertically */
-    font-size: 1.1rem; /* Adjust font size */
+    align-items: center;
+    justify-content: center; /* Center-align the list items */
+    position: relative;
+    padding-left: 1.5rem; /* Space for custom bullets */
 }
 
-#services i {
-    font-size: 1.5rem;
-    margin-right: 10px; /* Space between icon and text */
+#services ul li::before {
+    content: '•'; /* Custom bullet */
+    color: #547d65; /* Blue color for bullets */
+    position: absolute;
+    left: 0;
+    font-size: 1.2rem;
+    line-height: 1;
+}
+
+#services .row {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+#services .col-md-4 {
+    margin-bottom: 2rem; /* Space between cards */
 }

@@ -1,45 +1,63 @@
-window.addEventListener('DOMContentLoaded', event => {
+// Smooth scrolling for navigation links
+document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', function (e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href').slice(1);
+        document.getElementById(targetId).scrollIntoView({ behavior: 'smooth' });
 
-    // Navbar shrink function
-    var navbarShrink = function () {
-        const navbarCollapsible = document.body.querySelector('#mainNav');
-        if (!navbarCollapsible) {
-            return;
+        // Close the navbar if it's open
+        const navbarCollapse = document.querySelector('.navbar-collapse');
+        if (navbarCollapse.classList.contains('show')) {
+            navbarCollapse.classList.remove('show');
         }
-        if (window.scrollY === 0) {
-            navbarCollapsible.classList.remove('navbar-shrink')
-        } else {
-            navbarCollapsible.classList.add('navbar-shrink')
-        }
-
-    };
-
-    // Shrink the navbar 
-    navbarShrink();
-
-    // Shrink the navbar when page is scrolled
-    document.addEventListener('scroll', navbarShrink);
-
-    //  Activate Bootstrap scrollspy on the main nav element
-    const mainNav = document.body.querySelector('#mainNav');
-    if (mainNav) {
-        new bootstrap.ScrollSpy(document.body, {
-            target: '#mainNav',
-            rootMargin: '0px 0px -40%',
-        });
-    };
-
-    // Collapse responsive navbar when toggler is visible
-    const navbarToggler = document.body.querySelector('.navbar-toggler');
-    const responsiveNavItems = [].slice.call(
-        document.querySelectorAll('#navbarResponsive .nav-link')
-    );
-    responsiveNavItems.map(function (responsiveNavItem) {
-        responsiveNavItem.addEventListener('click', () => {
-            if (window.getComputedStyle(navbarToggler).display !== 'none') {
-                navbarToggler.click();
-            }
-        });
     });
+});
 
+// Reveal elements on scroll
+const fadeInElements = document.querySelectorAll('.fade-in');
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
+    });
+});
+
+fadeInElements.forEach(el => observer.observe(el));
+
+// Form validation
+const form = document.getElementById('contactForm');
+form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const message = document.getElementById('message').value.trim();
+    if (name && email && message) {
+        alert('Thank you for reaching out!');
+        form.reset();
+    } else {
+        alert('Please fill out all fields.');
+    }
+});
+
+// Rotate navbar toggler on click
+const navbarToggler = document.querySelector('.navbar-toggler');
+navbarToggler.addEventListener('click', function () {
+    this.classList.toggle('active');
+});
+
+// Auto-collapse navbar when clicking outside
+document.addEventListener('click', function (e) {
+    const navbar = document.querySelector('.navbar');
+    const isClickInsideNavbar = navbar.contains(e.target);
+
+    if (!isClickInsideNavbar) {
+        const navbarCollapse = document.querySelector('.navbar-collapse');
+        const toggler = document.querySelector('.navbar-toggler');
+        
+        if (navbarCollapse.classList.contains('show')) {
+            navbarCollapse.classList.remove('show');
+            toggler.classList.remove('active'); // Reset toggler rotation
+        }
+    }
 });
