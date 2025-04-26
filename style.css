@@ -1,0 +1,76 @@
+body {
+    scroll-behavior: smooth;
+}
+.hero {
+    background-color: #f8f9fa;
+    padding: 100px 15px;
+    text-align: center;
+}
+.nav-link {
+    cursor: pointer;
+}
+.fade-in {
+    opacity: 0;
+    transition: opacity 1s ease-in;
+}
+.fade-in.visible {
+    opacity: 1;
+}
+
+.navbar-toggler-icon {
+    transition: transform 0.3s ease;
+}
+
+.navbar-toggler.active .navbar-toggler-icon {
+    transform: rotate(90deg);
+}
+
+#services {
+    background: #f7f7f7; /* Light background color */
+    padding: 3rem 0;
+}
+
+#services .card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 10px; /* Rounded corners */
+    background: #ffffff;
+}
+
+#services .card:hover {
+    transform: translateY(-10px); /* Subtle hover lift effect */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Stronger shadow on hover */
+}
+
+#services h2 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 2rem;
+}
+
+#services .card-title {
+    font-size: 1.5rem;
+    margin-top: 1rem;
+    color: #007bff;
+}
+
+#services ul {
+    padding-left: 20px; /* Left padding for bullets */
+    margin: 0;
+}
+
+#services ul li {
+    font-size: 1rem;
+    margin: 0.5rem 0;
+    list-style-type: disc; /* Add bullet points */
+}
+
+#services .services-list li {
+    display: flex;
+    align-items: center; /* Align list items vertically */
+    font-size: 1.1rem; /* Adjust font size */
+}
+
+#services i {
+    font-size: 1.5rem;
+    margin-right: 10px; /* Space between icon and text */
+}
