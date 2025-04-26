@@ -6,6 +6,13 @@ body {
     padding: 100px 15px;
     text-align: center;
 }
+.logo {
+    height: 250px; 
+    width: auto; 
+    max-width: 100%; 
+    vertical-align: middle;
+    padding-top: 60px;
+}
 .nav-link {
     cursor: pointer;
 }
