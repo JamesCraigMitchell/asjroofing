@@ -25,21 +25,6 @@ const observer = new IntersectionObserver(entries => {
 
 fadeInElements.forEach(el => observer.observe(el));
 
-// Form validation
-const form = document.getElementById('contactForm');
-form.addEventListener('submit', function (e) {
-    e.preventDefault();
-    const name = document.getElementById('name').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const message = document.getElementById('message').value.trim();
-    if (name && email && message) {
-        alert('Thank you for reaching out!');
-        form.reset();
-    } else {
-        alert('Please fill out all fields.');
-    }
-});
-
 // Rotate navbar toggler on click
 const navbarToggler = document.querySelector('.navbar-toggler');
 navbarToggler.addEventListener('click', function () {
